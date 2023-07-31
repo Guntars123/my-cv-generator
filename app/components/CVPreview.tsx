@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {Education, Experience, FormData} from '../types/interfaces';
-import html2pdf from 'html2pdf.js';
 import {MdEmail, MdPhone, MdSchool, MdWork, MdLanguage, MdVerifiedUser, MdStar} from 'react-icons/md';
 
 interface CVPreviewProps {
@@ -8,17 +7,27 @@ interface CVPreviewProps {
 }
 
 const CVPreview: React.FC<CVPreviewProps> = ({formData}) => {
-    const handleGeneratePDF = () => {
-        const element = document.getElementById('cv-preview');
-        const opt = {
-            margin: 10,
-            filename: 'my_cv.pdf',
-            image: {type: 'jpeg', quality: 0.98},
-            html2canvas: {scale: 2},
-            jsPDF: {unit: 'mm', format: 'a4', orientation: 'portrait'},
-        };
+    const [html2pdf, setHtml2pdf] = useState<any>(null);
 
-        html2pdf().from(element).set(opt).save();
+    useEffect(() => {
+        import('html2pdf.js').then((module) => {
+            setHtml2pdf(() => module.default);
+        });
+    }, []);
+
+    const handleGeneratePDF = () => {
+        if (html2pdf && typeof window !== "undefined") {
+            const element = document.getElementById('cv-preview');
+            const opt = {
+                margin: 10,
+                filename: 'my_cv.pdf',
+                image: {type: 'jpeg', quality: 0.98},
+                html2canvas: {scale: 2},
+                jsPDF: {unit: 'mm', format: 'a4', orientation: 'portrait'},
+            };
+
+            html2pdf().from(element).set(opt).save();
+        }
     };
 
     if (!formData) {
