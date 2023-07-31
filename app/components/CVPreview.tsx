@@ -63,9 +63,13 @@ const CVPreview: React.FC<CVPreviewProps> = ({formData}) => {
                         <div key={index} className="mb-3 border p-2 rounded-md">
                             <p className="text-gray-600 mb-1 font-semibold">School: {edu.school}</p>
                             <p className="text-gray-600 mb-1">Degree: {edu.degree}</p>
-                            <p className="text-gray-600 mb-1">Dates: {edu.dates}</p>
+                            <p className="text-gray-600 mb-1">
+                                Dates:
+                                {edu.dates.from ? ` From: ${edu.dates.from.toLocaleDateString()}` : ''}
+                                {edu.dates.to ? ` To: ${edu.dates.to.toLocaleDateString()}` : ''}
+                            </p>
                         </div>
-                    )) : <p className="text-gray-600">No education information provided</p>}
+                    )) : <p className="text-gray-600">No education </p>}
                 </div>
 
                 {/* Experience Information */}
@@ -77,9 +81,13 @@ const CVPreview: React.FC<CVPreviewProps> = ({formData}) => {
                         <div key={index} className="mb-3 border p-2 rounded-md">
                             <p className="text-gray-600 mb-1 font-semibold">Company: {exp.company}</p>
                             <p className="text-gray-600 mb-1">Role: {exp.role}</p>
-                            <p className="text-gray-600 mb-1">Dates: {exp.dates}</p>
+                            <p className="text-gray-600 mb-1">
+                                Dates:
+                                {exp.dates.from ? ` From: ${exp.dates.from.toLocaleDateString()}` : ''}
+                                {exp.dates.to ? ` To: ${exp.dates.to.toLocaleDateString()}` : ''}
+                            </p>
                         </div>
-                    )) : <p className="text-gray-600">No experience information provided</p>}
+                    )) : <p className="text-gray-600">No experience </p>}
                 </div>
 
                 <div className="mb-6">

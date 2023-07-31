@@ -14,8 +14,8 @@ const IndexPage: React.FC = () => {
         certifications: '',
         hobbies: '',
         references: '',
-        education: [{school: '', degree: '', dates: ''}],
-        experiences: [{company: '', role: '', dates: ''}],
+        education: [{school: '', degree: '', dates: {from: null, to: null}}],
+        experiences: [{company: '', role: '', dates: {from: null, to: null}}],
     };
 
     const [formData, setFormData] = useState<FormData>(initialFormData);
