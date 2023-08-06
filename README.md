@@ -1,6 +1,6 @@
 # My CV Generator - Next.js Learning Project
 
-Welcome to my project! This application is a CV Generator, built as a learning project using Next.js.
+Welcome to my project! This application is a CV Generator, built as a learning project using Next.js. [**Check out app - here!**](https://my-cv-generator.vercel.app/)
 
 ![App preview](public/images/preview.png)
 
