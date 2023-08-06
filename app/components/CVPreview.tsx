@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {Education, Experience, FormData} from '../types/interfaces';
 import {MdEmail, MdPhone, MdSchool, MdWork, MdLanguage, MdVerifiedUser, MdStar} from 'react-icons/md';
 
@@ -35,7 +35,7 @@ const CVPreview: React.FC<CVPreviewProps> = ({formData}) => {
     }
 
     return (
-        <div className="bg-gray-200 rounded-lg shadow-md p-6">
+        <div className="bg-white rounded-lg shadow-md p-6">
             <div id="cv-preview">
                 <div className="flex justify-center mb-6">
                     <h2 className="text-4xl font-semibold mb-6">Curriculum vitae</h2>
@@ -65,8 +65,14 @@ const CVPreview: React.FC<CVPreviewProps> = ({formData}) => {
                             <p className="text-gray-600 mb-1">Degree: {edu.degree}</p>
                             <p className="text-gray-600 mb-1">
                                 Dates:
-                                {edu.dates.from ? ` From: ${edu.dates.from.toLocaleDateString()}` : ''}
-                                {edu.dates.to ? ` To: ${edu.dates.to.toLocaleDateString()}` : ''}
+                                {edu.dates.from ? ` ${edu.dates.from.toLocaleDateString(undefined, {
+                                    year: "numeric",
+                                    month: "long"
+                                })}` : ''}
+                                {edu.dates.to ? ` - ${edu.dates.to.toLocaleDateString(undefined, {
+                                    year: "numeric",
+                                    month: "long"
+                                })}` : ''}
                             </p>
                         </div>
                     )) : <p className="text-gray-600">No education </p>}
@@ -83,8 +89,14 @@ const CVPreview: React.FC<CVPreviewProps> = ({formData}) => {
                             <p className="text-gray-600 mb-1">Role: {exp.role}</p>
                             <p className="text-gray-600 mb-1">
                                 Dates:
-                                {exp.dates.from ? ` From: ${exp.dates.from.toLocaleDateString()}` : ''}
-                                {exp.dates.to ? ` To: ${exp.dates.to.toLocaleDateString()}` : ''}
+                                {exp.dates.from ? ` ${exp.dates.from.toLocaleDateString(undefined, {
+                                    year: "numeric",
+                                    month: "long"
+                                })}` : ''}
+                                {exp.dates.to ? ` - ${exp.dates.to.toLocaleDateString(undefined, {
+                                    year: "numeric",
+                                    month: "long"
+                                })}` : ''}
                             </p>
                         </div>
                     )) : <p className="text-gray-600">No experience </p>}

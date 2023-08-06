@@ -22,10 +22,12 @@ const IndexPage: React.FC = () => {
 
     return (
         <div>
-            <h1 className="text-4xl font-semibold text-center m-8">CV Generator</h1>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mx-auto max-w-6xl p-8">
+            <h1 className="text-2xl sm:text-4xl font-semibold text-center m-8">CV Generator</h1>
+            <div className="grid grid-cols-1 gap-8 mx-auto p-4 sm:p-8 sm:grid-cols-2 sm:max-w-6xl">
                 <CVForm formData={formData} setFormData={setFormData}/>
-                <CVPreview formData={formData}/>
+                <div className="bg-gray-200 shadow-lg p-4 sm:p-8" style={{minHeight: '500px'}}>
+                    <CVPreview formData={formData}/>
+                </div>
             </div>
         </div>
     );

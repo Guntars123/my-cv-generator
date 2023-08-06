@@ -60,9 +60,9 @@ const CVForm: React.FC<CVFormProps> = ({formData, setFormData}) => {
 
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value } = e.target;
-        setLocalFormData({ ...localFormData, [name]: value });
-        setFormData({ ...formData, [name]: value });
+        const {name, value} = e.target;
+        setLocalFormData({...localFormData, [name]: value});
+        setFormData({...formData, [name]: value});
     };
 
     const handleChangeEducation = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
@@ -137,15 +137,15 @@ const CVForm: React.FC<CVFormProps> = ({formData, setFormData}) => {
     const removeEducationField = (index: number) => {
         const newEducation = [...localFormData.education];
         newEducation.splice(index, 1);
-        setLocalFormData({ ...localFormData, education: newEducation });
-        setFormData({ ...formData, education: newEducation });
+        setLocalFormData({...localFormData, education: newEducation});
+        setFormData({...formData, education: newEducation});
     };
 
     const removeExperienceField = (index: number) => {
         const newExperiences = [...localFormData.experiences];
         newExperiences.splice(index, 1);
-        setLocalFormData({ ...localFormData, experiences: newExperiences });
-        setFormData({ ...formData, experiences: newExperiences });
+        setLocalFormData({...localFormData, experiences: newExperiences});
+        setFormData({...formData, experiences: newExperiences});
     };
 
     return (
@@ -198,7 +198,7 @@ const CVForm: React.FC<CVFormProps> = ({formData, setFormData}) => {
                             type="text"
                             name="school"
                             value={edu.school}
-                            onChange={(e)=>handleChangeEducation(e, index)}
+                            onChange={(e) => handleChangeEducation(e, index)}
                             placeholder="School"
                             className="px-2 py-1 border rounded-md"
                         />
@@ -210,7 +210,7 @@ const CVForm: React.FC<CVFormProps> = ({formData, setFormData}) => {
                             type="text"
                             name="degree"
                             value={edu.degree}
-                            onChange={(e)=>handleChangeEducation(e, index)}
+                            onChange={(e) => handleChangeEducation(e, index)}
                             placeholder="Degree"
                             className="px-2 py-1 border rounded-md"
                         />
@@ -257,7 +257,7 @@ const CVForm: React.FC<CVFormProps> = ({formData, setFormData}) => {
                             type="text"
                             name="company"
                             value={exp.company}
-                            onChange={(e)=>handleChangeExperience(e, index)}
+                            onChange={(e) => handleChangeExperience(e, index)}
                             placeholder="Company"
                             className="px-2 py-1 border rounded-md"
                         />
@@ -269,7 +269,7 @@ const CVForm: React.FC<CVFormProps> = ({formData, setFormData}) => {
                             type="text"
                             name="role"
                             value={exp.role}
-                            onChange={(e)=>handleChangeExperience(e, index)}
+                            onChange={(e) => handleChangeExperience(e, index)}
                             placeholder="Role"
                             className="px-2 py-1 border rounded-md"
                         />
@@ -305,7 +305,6 @@ const CVForm: React.FC<CVFormProps> = ({formData, setFormData}) => {
                     className="px-2 py-1 border rounded-md bg-blue-500 text-white">
                 Add experience
             </button>
-
 
 
             <div className="flex flex-col space-y-2">
