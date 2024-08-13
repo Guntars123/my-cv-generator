@@ -4,7 +4,7 @@ Welcome to my project! This application is a CV Generator, built as a learning p
 
 ![App preview](public/images/preview.png)
 
-This project is deployed using Vercel and you can access it [**here**](https://my-cv-generator.vercel.app/).
+This project is deployed using Vercel and you can access it [**here**](https://my-cv-generator.vercel.app/)....
 
 ## 📐 Project Overview
 
