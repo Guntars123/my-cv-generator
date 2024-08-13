@@ -1,5 +1,6 @@
 "use client"
 import React, {useState} from 'react';
+/*
 import CVForm from './components/CVForm';
 import CVPreview from './components/CVPreview';
 import {FormData} from './types/interfaces';
@@ -33,4 +34,4 @@ const IndexPage: React.FC = () => {
     );
 };
 
-export default IndexPage;
+export default IndexPage;*/
