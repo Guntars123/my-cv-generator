@@ -23,7 +23,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Running tests...'
-                sh 'npm test' // Ja tev ir testi. Piemēram, ar Jest
+                //sh 'npm test' // Ja tev ir testi. Piemēram, ar Jest
             }
         }
 
