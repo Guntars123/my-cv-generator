@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Education, Experience, FormData} from '../types/interfaces';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-declare module 'react-datepicker';
+
 
 interface CVFormProps {
     formData: FormData;
