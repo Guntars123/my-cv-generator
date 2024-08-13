@@ -1,7 +1,6 @@
 "use client"
 import React, {useState} from 'react';
-/*
-import CVForm from './components/CVForm';
+/*import CVForm from './components/CVForm';
 import CVPreview from './components/CVPreview';
 import {FormData} from './types/interfaces';
 
@@ -32,6 +31,14 @@ const IndexPage: React.FC = () => {
             </div>
         </div>
     );
+};*/
+
+const IndexPage: React.FC = () => {
+    return (
+        <div>
+            <h1>Hello, world!</h1>
+        </div>
+    );
 };
 
-export default IndexPage;*/
+export default IndexPage;
