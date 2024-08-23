@@ -11,7 +11,7 @@ pipeline {
         stage('Setup Python Environment') {
             steps {
                 script {
-                    // Use double quotes to handle spaces in directory names
+                    // Run Docker commands using a script block
                     sh 'docker run --rm -v "${WORKSPACE}:/src" returntocorp/semgrep semgrep --config p/javascript --exclude node_modules --exclude .next --json'
                 }
             }
