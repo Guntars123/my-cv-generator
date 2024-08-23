@@ -10,15 +10,14 @@ pipeline {
 
         stage('Semgrep Analysis') {
             steps {
-                sh 'pip install semgrep'
-                sh 'semgrep --config p/javascript --exclude node_modules --exclude .next --json > semgrep-report.json'
+                sh 'docker run --rm -v $WORKSPACE:/src returntocorp/semgrep semgrep --config p/javascript --exclude node_modules --exclude .next --json > semgrep-report.json'
             }
         }
 
         stage('Publish Semgrep Report') {
             steps {
                 archiveArtifacts artifacts: 'semgrep-report.json', allowEmptyArchive: true
-                // Publish HTML or other reports here
+                // Additional steps to process or publish the report
             }
         }
     }
