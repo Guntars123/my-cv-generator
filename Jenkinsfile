@@ -4,7 +4,7 @@ pipeline {
     stages {
  stage('Checkout') {
             steps {
-                git 'https://github.com/Guntars123/my-cv-generator.git'
+                 git url: 'https://github.com/Guntars123/my-cv-generator.git', branch: 'main'
                 sh 'echo "Checked out the repository successfully"'
             }
         }
