@@ -1,0 +1,8 @@
+rules:
+  - id: test-rule
+    patterns:
+      - pattern: eval($X)
+    message: "Found usage of eval, which should be avoided."
+    severity: ERROR
+    languages:
+      - javascript

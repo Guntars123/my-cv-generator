@@ -12,7 +12,7 @@ pipeline {
             steps {
                 script {
                     // Run Docker commands using a script block
-                    sh 'docker run --rm -v "${WORKSPACE}:/src" returntocorp/semgrep semgrep --config p/javascript --exclude node_modules --exclude .next --json'
+                    docker run --rm -v /var/lib/jenkins/workspace/Semgrep - test:/src returntocorp/semgrep semgrep --config .semgrep.yml --exclude node_modules --exclude .next --json
                 }
             }
         }
