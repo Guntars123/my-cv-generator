@@ -8,16 +8,26 @@ pipeline {
             }
         }
 
+        stage('Setup Python Environment') {
+            steps {
+                sh '''
+                sudo apt-get update
+                sudo apt-get install -y python3 python3-pip
+                '''
+            }
+        }
+
         stage('Semgrep Analysis') {
             steps {
-                sh 'docker run --rm -v $WORKSPACE:/src returntocorp/semgrep semgrep --config p/javascript --exclude node_modules --exclude .next --json > semgrep-report.json'
+                sh 'python3 -m pip install semgrep'
+                sh 'python3 -m semgrep --config p/javascript --exclude node_modules --exclude .next --json > semgrep-report.json'
             }
         }
 
         stage('Publish Semgrep Report') {
             steps {
                 archiveArtifacts artifacts: 'semgrep-report.json', allowEmptyArchive: true
-                // Additional steps to process or publish the report
+                // Add steps to publish reports if necessary
             }
         }
     }
