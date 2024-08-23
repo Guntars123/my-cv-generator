@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/your-repo/your-nextjs-project.git'
+                git branch: 'main', url: 'https://github.com/Guntars123/my-cv-generator.git'
             }
         }
 
