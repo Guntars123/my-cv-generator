@@ -2,10 +2,10 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
+ stage('Checkout') {
             steps {
-                // Checkout your source code from Git
                 git 'https://github.com/Guntars123/my-cv-generator.git'
+                sh 'echo "Checked out the repository successfully"'
             }
         }
 
