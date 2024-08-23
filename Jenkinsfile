@@ -2,31 +2,24 @@ pipeline {
     agent any
 
     stages {
- stage('Checkout') {
+        stage('Checkout') {
             steps {
-                 git url: 'https://github.com/Guntars123/my-cv-generator.git', branch: 'main'
-                sh 'echo "Checked out the repository successfully"'
+                // Checkout the repository and branch
+                git url: 'https://github.com/Guntars123/my-cv-generator.git', branch: 'main'
             }
         }
-
-        stage('Semgrep Analysis') {
+        stage('Setup Python Environment') {
             steps {
                 script {
-                    // Run Semgrep analysis using Docker
-                    docker.image('returntocorp/semgrep').inside {
-                        sh 'semgrep --config p/javascript --exclude node_modules --exclude .next --json > semgrep-results.json'
-                    }
+                    // Run Docker commands using a script block
+                    sh 'docker run --rm -v ${WORKSPACE}:/src returntocorp/semgrep semgrep --config p/javascript --exclude node_modules --exclude .next --json'
                 }
             }
         }
-
         stage('Publish Semgrep Report') {
             steps {
-                // Archive the Semgrep results
-                archiveArtifacts artifacts: 'semgrep-results.json'
-
-                // Optionally, you can use a plugin or custom script to publish results
-                // e.g., publishChecks or other reporting tools
+                // Publish the Semgrep report if applicable
+                // e.g., archive artifacts or publish reports
             }
         }
     }
