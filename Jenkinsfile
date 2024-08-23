@@ -18,8 +18,11 @@ pipeline {
         }
         stage('Publish Semgrep Report') {
             steps {
-                // Publish the Semgrep report if applicable
-                // e.g., archive artifacts or publish reports
+                // Example of publishing a report or archiving artifacts
+                // Assuming you have some report files or artifacts to handle
+                // Uncomment and modify the following line if needed:
+                // archiveArtifacts artifacts: '**/semgrep-report.json', allowEmptyArchive: true
+                echo 'Publishing Semgrep report...'
             }
         }
     }
