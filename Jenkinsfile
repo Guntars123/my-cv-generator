@@ -1,33 +1,33 @@
 pipeline {
     agent any
+
     stages {
-        stage('Setup Python Environment') {
+        stage('Checkout') {
             steps {
-                sh '''
-                    apt-get update
-                    apt-get install -y python3-pip
-                    pip3 install semgrep
-                '''
+                // Checkout your source code from Git
+                git 'https://github.com/Guntars123/my-cv-generator.git'
             }
         }
+
         stage('Semgrep Analysis') {
             steps {
-                sh 'semgrep --config p/javascript --exclude node_modules --exclude .next --json > semgrep-report.json'
+                script {
+                    // Run Semgrep analysis using Docker
+                    docker.image('returntocorp/semgrep').inside {
+                        sh 'semgrep --config p/javascript --exclude node_modules --exclude .next --json > semgrep-results.json'
+                    }
+                }
             }
         }
+
         stage('Publish Semgrep Report') {
             steps {
-                // Assuming you're using some plugin or custom logic to publish the report
-                publishHTML(reportName: 'Semgrep Report', reportDir: '.', reportFiles: 'semgrep-report.json')
+                // Archive the Semgrep results
+                archiveArtifacts artifacts: 'semgrep-results.json'
+
+                // Optionally, you can use a plugin or custom script to publish results
+                // e.g., publishChecks or other reporting tools
             }
-        }
-    }
-    post {
-        always {
-            echo 'Pipeline execution complete.'
-        }
-        failure {
-            echo 'Issues were found during Semgrep Analysis.'
         }
     }
 }
