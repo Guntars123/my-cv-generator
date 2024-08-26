@@ -14,10 +14,10 @@ pipeline {
                 sh 'npm install'
             }
         }
-        stage('Setup Python Environment') {
+        stage('Run Semgrep Analysis') {
             steps {
                 script {
-                    // Run Docker commands using a script block
+                    // Run Docker command to execute Semgrep analysis
                     sh 'docker run --rm -v "${WORKSPACE}:/src" returntocorp/semgrep semgrep --config p/javascript --exclude node_modules --exclude .next --json > semgrep-report.json'
                 }
             }
