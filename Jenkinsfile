@@ -12,14 +12,16 @@ pipeline {
             steps {
                 script {
                     // Run Docker commands using a script block
-                    sh 'docker run --rm -v ${WORKSPACE}:/src returntocorp/semgrep semgrep --config .semgrep.yml --exclude node_modules --exclude .next --json'
+                    sh 'docker run --rm -v "${WORKSPACE}:/src" returntocorp/semgrep semgrep --config p/javascript --exclude node_modules --exclude .next --json'
                 }
             }
         }
         stage('Publish Semgrep Report') {
             steps {
-                // Publish the Semgrep report if applicable
+                // Example of publishing a report or archiving artifacts
                 echo 'Publishing Semgrep report...'
+                // Uncomment and modify the following line if needed:
+                // archiveArtifacts artifacts: '**/semgrep-report.json', allowEmptyArchive: true
             }
         }
     }
